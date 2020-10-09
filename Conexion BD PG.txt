@@ -1,0 +1,23 @@
+conexion a host
+		$link = new PDO("mysql:host=MYSQL5025.site4now.net;
+						dbname=db_a65e29_tonyalv",
+			            "a65e29_tonyalv",
+			            "Alvarez#1");
+
+		$link ->exec("set name utf8");
+
+		return $link;
+
+
+conexion a local host
+
+	static public function conectar(){
+
+		$link = new PDO("mysql:host=localhost;
+						dbname=pos",
+			            "root",
+			            "");
+
+		$link ->exec("set name utf8");
+
+		return $link;
