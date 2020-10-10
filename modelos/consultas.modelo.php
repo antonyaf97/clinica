@@ -10,7 +10,7 @@ class ModeloConsulta{
 
 	static public function mdlIngresarConsulta($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idPaciente, Diagnostico, Medicamento) VALUES (:idPaciente, :Diagnostico, :Medicamento");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idPaciente, Diagnostico, Medicamento) VALUES (:idPaciente, :Diagnostico, :Medicamento)");
 
         $stmt->bindParam(":idPaciente", $datos["idPaciente"], PDO::PARAM_STR);
 		$stmt->bindParam(":Diagnostico", $datos["Diagnostico"], PDO::PARAM_STR);

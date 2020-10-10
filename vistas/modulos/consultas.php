@@ -29,7 +29,7 @@
           Agregar Consulta
 
         </button>
-        
+      
 
       </div>
 
@@ -306,13 +306,13 @@ MODAL EDITAR CONSULTA
 
       ?>
 
-    
-
     </div>
 
   </div>
 
 </div>
+
+    
 
 
 <?php
@@ -321,6 +321,4 @@ MODAL EDITAR CONSULTA
   $EliminarConsulta -> ctrEliminarConsulta();
 
 ?>
-
-
 

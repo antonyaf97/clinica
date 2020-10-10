@@ -10,7 +10,7 @@ class ModeloPaciente{
 
 	static public function mdlIngresarPaciente($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(Documento, Nombre, Apellido, Fecha_Nacimiento, Tipo_de_Sangre, Padecimientos_Anteriores) VALUES (:Documento, :Nombre, :Apellido, :Fecha_Nacimiento, :Tipo_de_Sangre, :Padecimientos_Anteriores");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(Documento, Nombre, Apellido, Fecha_Nacimiento, Tipo_de_Sangre, Padecimientos_Anteriores) VALUES (:Documento, :Nombre, :Apellido, :Fecha_Nacimiento, :Tipo_de_Sangre, :Padecimientos_Anteriores)");
 
 		$stmt->bindParam(":Documento", $datos["Documento"], PDO::PARAM_INT);
 		$stmt->bindParam(":Nombre", $datos["Nombre"], PDO::PARAM_STR);

@@ -8,15 +8,16 @@ class ControladorConsulta{
 
 	static public function ctrCrearConsulta(){
 
-		if(isset($_POST["nuevoDiagnostico"])){
+		if(isset($_POST["nuevoDocumento"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoDiagnostico"]) &&
+			if(preg_match('/^[0-9]+$/', $_POST["nuevoDocumento"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoDiagnostico"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoMedicamento"])){ 
 			   
 
 			   	$tabla = "consultas"; 
 
-			   	$datos = array("idPaciente"=>$_POST["nuevoPaciente"],
+			   	$datos = array("idPaciente"=>$_POST["nuevoDocumento"],
 			   		           "Diagnostico"=>$_POST["nuevoDiagnostico"],
 					           "Medicamento"=>$_POST["nuevoMedicamento"]);
 
@@ -90,9 +91,9 @@ class ControladorConsulta{
 
 	static public function ctrEditarConsulta(){
 
-		if(isset($_POST["editarDocumento"])){
+		if(isset($_POST["editarPaciente"])){
 
-			if(
+			if(preg_match('/^[0-9]+$/', $_POST["editarPaciente"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarDiagnostico"]) &&
 			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarMedicamento"])){
 
