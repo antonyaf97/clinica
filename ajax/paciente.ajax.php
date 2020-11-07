@@ -1,7 +1,7 @@
 <?php
 
-require_once "../controladores/pacientes.controlador.php";
-require_once "../modelos/pacientes.modelo.php";
+require_once "../controladores/paciente.controlador.php";
+require_once "../modelos/paciente.modelo.php";
 
 class AjaxPaciente{
 
@@ -9,12 +9,12 @@ class AjaxPaciente{
 	EDITAR PACIENTE
 	=============================================*/	
 
-	public $idPaciente;
+	public $CuiPaciente;
 
 	public function ajaxEditarPaciente(){
 
 		$item = "id";
-		$valor = $this->idPaciente;
+		$valor = $this->CuiPaciente;
 
 		$respuesta = ControladorPaciente::ctrMostrarPaciente($item, $valor);
 
@@ -29,10 +29,10 @@ class AjaxPaciente{
 EDITAR PACIENTE
 =============================================*/	
 
-if(isset($_POST["idPaciente"])){
+if(isset($_POST["CuiPaciente"])){
 
-	$editar = new AjaxPaciente();
-	$editar -> idPaciente = $_POST["idPaciente"];
-	$editar -> ajaxEditarPaciente();
+	$paciente = new AjaxPaciente();
+	$paciente -> idCliente = $_POST["CuiPaciente"];
+	$paciente -> ajaxEditarPaciente();
 
 }
