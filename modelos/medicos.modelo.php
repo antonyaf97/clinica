@@ -2,19 +2,22 @@
 
 require_once "conexion.php";
 
-class ModeloConsulta{
+class ModeloMedico{
 
 	/*=============================================
-	CREAR CONSULTA
+	CREAR MEDICO
 	=============================================*/
 
-	static public function mdlIngresarConsulta($tabla, $datos){
+	static public function mdlIngresarMedico($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idPaciente, Diagnostico, Medicamento) VALUES (:idPaciente, :Diagnostico, :Medicamento)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla( Nombre, Apellido, Especialidad, NumeroColegiado, Cargo, Observaciones) VALUES ( :Nombre, :Apellido, :Especialidad, :NumeroColegiado, :Cargo, :Observaciones)");
 
-        $stmt->bindParam(":idPaciente", $datos["idPaciente"], PDO::PARAM_STR);
-		$stmt->bindParam(":Diagnostico", $datos["Diagnostico"], PDO::PARAM_STR);
-		$stmt->bindParam(":Medicamento", $datos["Medicamento"], PDO::PARAM_STR);
+		$stmt->bindParam(":Nombre", $datos["Nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":Apellido", $datos["Apellido"], PDO::PARAM_STR);
+		$stmt->bindParam(":Especialidad", $datos["Especialidad"], PDO::PARAM_STR);
+		$stmt->bindParam(":NumeroColegiado", $datos["NumeroColegiado"], PDO::PARAM_INT);
+		$stmt->bindParam(":Cargo", $datos["Cargo"], PDO::PARAM_STR);
+		$stmt->bindParam(":Observaciones", $datos["Observaciones"], PDO::PARAM_STR);
 		
 
 		if($stmt->execute()){
@@ -33,10 +36,10 @@ class ModeloConsulta{
 	}
 
 	/*=============================================
-	MOSTRAR CONSULTA
+	MOSTRAR MEDICO
 	=============================================*/
 
-	static public function mdlMostrarConsulta($tabla, $item, $valor){
+	static public function mdlMostrarMedico($tabla, $item, $valor){
 
 		if($item != null){
 
@@ -65,17 +68,20 @@ class ModeloConsulta{
 	}
 
 	/*=============================================
-	EDITAR CONSULTA
+	EDITAR MEDICO
 	=============================================*/
 
-	static public function mdlEditarConsulta($tabla, $datos){
+	static public function mdlEditarMedico($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Diagnostico = :Diagnostico, Medicamento = :Medicamento  WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Nombre = :Nombre, Apellido = :Apellido, Especialidad = :Especialidad, NumeroColegiado = :NumeroColegiado, Cargo = :Cargo, Observaciones = :Observaciones   WHERE id = :id");
 
 		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
-		$stmt->bindParam(":idPaciente", $datos["idPaciente"], PDO::PARAM_INT);
-	    $stmt->bindParam(":Diagnostico", $datos["Diagnostico"], PDO::PARAM_STR);
-		$stmt->bindParam(":Medicamento", $datos["Medicamento"], PDO::PARAM_STR);
+	    $stmt->bindParam(":Nombre", $datos["Nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":Apellido", $datos["Apellido"], PDO::PARAM_STR);
+		$stmt->bindParam(":Especialidad", $datos["Especialidad"], PDO::PARAM_STR);
+		$stmt->bindParam(":NumeroColegiado", $datos["NumeroColegiado"], PDO::PARAM_INT);
+		$stmt->bindParam(":Cargo", $datos["Cargo"], PDO::PARAM_STR);
+		$stmt->bindParam(":Observaciones", $datos["Observaciones"], PDO::PARAM_STR);
 	    
 
 		if($stmt->execute()){
@@ -94,10 +100,10 @@ class ModeloConsulta{
 	}
 
 	/*=============================================
-	ELIMINAR CONSULTA
+	ELIMINAR MEDICO
 	=============================================*/
 
-	static public function mdlEliminarConsulta($tabla, $datos){
+	static public function mdlEliminarMedico($tabla, $datos){
 
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
 
@@ -120,10 +126,10 @@ class ModeloConsulta{
 	}
 
 	/*=============================================
-	ACTUALIZAR CONSULTA
+	ACTUALIZAR MEDICO
 	=============================================*/
 
-	static public function mdlActualizarConsulta($tabla, $item1, $valor1, $valor){
+	static public function mdlActualizarMedico($tabla, $item1, $valor1, $valor){
 
 		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE id = :id");
 
