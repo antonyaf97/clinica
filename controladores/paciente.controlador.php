@@ -8,23 +8,24 @@ class ControladorPaciente{
 
 	static public function ctrCrearPaciente(){
 
-		if(isset($_POST["nuevoDocumento"])){
+		if(isset($_POST["NuevoPaciente"])){
 
-			if(preg_match('/^[0-9]+$/', $_POST["nuevoDocumento"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoPaciente"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellido"]) && 
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoTipodesangre"]) && 
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoPadecimiento"])){
+			if(preg_match('/^[0-9]+$/', $_POST["NuevoCui"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["NuevoNombre"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["NuevoApellido"]) &&
+			   preg_match('/^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/', $_POST["NuevaFechaNacimiento"])&&
+			   preg_match('/^|+[a-zA-Z0-9_]+$/', $_POST["NuevoTipodesangre"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["NuevoPadecimiento"])){
 
-			   	$tabla = "pacientes"; 
+                $tabla = "paciente";
 
-			   	$datos = array("Documento"=>$_POST["nuevoDocumento"],
-			   		           "Nombre"=>$_POST["nuevoPaciente"],
-					           "Apellido"=>$_POST["nuevoApellido"],
-					           "Fecha_Nacimiento"=>$_POST["nuevoFechaNacimiento"],
-					           "Tipo_de_Sangre"=>$_POST["nuevoTipodesangre"],
-					           "Padecimientos_Anteriores"=>$_POST["nuevoPadecimiento"]);
-					           
+			   	$datos = array("CuiPaciente"=>$_POST["NuevoCui"],
+			   		           "Nombre"=>$_POST["NuevoNombre"],
+					           "Apellido"=>$_POST["NuevoApellido"],
+					           "Fecha_Nacimiento"=>$_POST["NuevaFechaNacimiento"],
+					           "Tipo_de_Sangre"=>$_POST["NuevoTipodesangre"],
+					           "Padecimientos_Anteriores"=>$_POST["NuevoPadecimiento"]);
+
 
 			   	$respuesta = ModeloPaciente::mdlIngresarPaciente($tabla, $datos);
 
@@ -40,7 +41,7 @@ class ControladorPaciente{
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "pacientes";
+									window.location = "paciente";
 
 									}
 								})
@@ -61,7 +62,7 @@ class ControladorPaciente{
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "pacientes";
+							window.location = "paciente";
 
 							}
 						})
@@ -82,7 +83,7 @@ class ControladorPaciente{
 
 	static public function ctrMostrarPaciente($item, $valor){
 
-		$tabla = "pacientes";
+		$tabla = "paciente";
 
 		$respuesta = ModeloPaciente::mdlMostrarPaciente($tabla, $item, $valor);
 
@@ -96,23 +97,24 @@ class ControladorPaciente{
 
 	static public function ctrEditarPaciente(){
 
-		if(isset($_POST["editarDocumento"])){
+		if(isset($_POST["ctrEditarPaciente"])){
 
-			if(preg_match('/^[0-9]+$/', $_POST["editarDocumento"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarPaciente"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarApellido"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarTipodesangre"]) &&
-			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarPadecimiento"])){
+			if(preg_match('/^[0-9]+$/', $_POST["EditarCui"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["EditarNombre"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["EditarApellido"]) &&
+			   preg_match('/^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/', $_POST["EditarFechaNacimiento"])&&
+			   preg_match('/^|+[a-zA-Z0-9_]+$/', $_POST["EditarTipodesangre"]) &&
+			   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["EditarPadecimiento"])){
+			   	
+			   	$tabla = "paciente";
 
-			   	$tabla = "pacientes";
+			   	$datos = array("CuiPaciente"=>$_POST["EditarCui"],
+			   		           "Nombre"=>$_POST["EditarNombre"],
+					           "Apellido"=>$_POST["EditarApellido"],
+					           "Fecha_Nacimiento"=>$_POST["EditarFechaNacimiento"],
+					           "Tipo_de_Sangre"=>$_POST["EditarTipodesangre"],
+					           "Padecimientos_Anteriores"=>$_POST["EditarPadecimiento"]);
 
-			   	$datos = array("id"=>$_POST["idPaciente"],
-			   		           "Documento"=>$_POST["editarDocumento"],
-			   				   "Nombre"=>$_POST["editarPaciente"],
-					           "Apellido"=>$_POST["editarApellido"],
-					           "Fecha_Nacimiento"=>$_POST["editarFechaNacimiento"],
-					           "Tipo_de_Sangre"=>$_POST["editarTipodesangre"],
-					           "Padecimientos_Anteriores"=>$_POST["editarPadecimiento"]);
 
 			   	$respuesta = ModeloPaciente::mdlEditarPaciente($tabla, $datos);
 
@@ -122,13 +124,13 @@ class ControladorPaciente{
 
 					swal({
 						  type: "success",
-						  title: "El cliente ha sido cambiado correctamente",
+						  title: "El paciente ha sido cambiado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "pacientes";
+									window.location = "paciente";
 
 									}
 								})
@@ -149,7 +151,7 @@ class ControladorPaciente{
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "pacientes";
+							window.location = "paciente";
 
 							}
 						})
@@ -170,10 +172,10 @@ class ControladorPaciente{
 
 	static public function ctrEliminarPaciente(){
 
-		if(isset($_GET["idPaciente"])){
+		if(isset($_GET["CuiPaciente"])){
 
-			$tabla ="pacientes";
-			$datos = $_GET["idPaciente"];
+			$tabla ="paciente";
+			$datos = $_GET["CuiPaciente"];
 
 			$respuesta = ModeloPaciente::mdlEliminarPaciente($tabla, $datos);
 
@@ -189,7 +191,7 @@ class ControladorPaciente{
 					  }).then(function(result){
 								if (result.value) {
 
-								window.location = "pacientes";
+								window.location = "paciente";
 
 								}
 							})
