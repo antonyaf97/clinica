@@ -48,13 +48,21 @@
 
 			</li>
 
+			<li>
+
+				<a href="medicos">
+
+					<i class="fa fa-users"></i>
+					<span>Medicos</span>
+
+				</a>
+
+			</li>
+
 
 
 				</ul>
 
-			</li>
-
-		</ul>
 
 	</section>
 
