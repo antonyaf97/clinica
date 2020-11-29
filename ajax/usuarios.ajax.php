@@ -97,3 +97,4 @@ if(isset( $_POST["validarUsuario"])){
 	$valUsuario -> ajaxValidarUsuario();
 
 }
+
