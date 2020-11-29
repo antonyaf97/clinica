@@ -10,5 +10,6 @@ require_once "modelos/pacientes.modelo.php";
 require_once "modelos/consultas.modelo.php";
 require_once "modelos/medicos.modelo.php";
 
+
 $plantilla = new ControladorPlantilla();
 $plantilla -> ctrPlantilla();
