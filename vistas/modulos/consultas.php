@@ -321,4 +321,3 @@ MODAL EDITAR CONSULTA
   $EliminarConsulta -> ctrEliminarConsulta();
 
 ?>
-
