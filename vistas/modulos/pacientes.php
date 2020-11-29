@@ -410,5 +410,3 @@ MODAL EDITAR PACIENTE
   $EliminarPaciente -> ctrEliminarPaciente();
 
 ?>
-
-
