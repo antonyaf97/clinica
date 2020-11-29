@@ -1,5 +1,5 @@
 
-  <div class="content-wrapper">
+   <div class="content-wrapper">
 
     <section class="content-header">
 
@@ -48,8 +48,6 @@
                 <th style="width:10px">#</th>
                 <th>Nombre</th>
                 <th>Usuario</th>
-                <th>Foto</th>
-                <th>Rol</th>
                 <th>Estado</th>
                 <th>Ultimo Login</th>
                 <th>Acciones</th>
@@ -72,19 +70,8 @@
                           <td>'.$value["Nombre"].'</td>
                           <td>'.$value["Usuario"].'</td>';
 
-                          if($value["Foto"] != ""){
-
-                              echo'<td><img src='.$value["Foto"].'" class="img-thumbnail" width="40px"></td>';
-
-                              }else{
-
-                                echo'<td><img src="vistas/img/usuarios/default/user2.png" class="img-thumbnail" width="40px"></td>';
-
-                              }
-
-                        
-
-                     echo'<td>'.$value["Perfil"].'</td>';
+  
+                          
 
                         if($value["Estado"] !=0){
 
@@ -96,7 +83,6 @@
 
                         }
 
-                          
 
                       echo '<td>'.$value["Ultimo_Login"].'</td>
 
@@ -105,8 +91,10 @@
                             <div>
                                   
                                <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+                               
+                               <button class="btn btn-danger btnEliminarUsuario" idUsuario="'.$value["id"].'" fotoUsuario="'.$value["Foto"].'" usuario="'.$value["Usuario"].'"><i class="fa fa-times"></i></button>
 
-                              <button class="btn btn-danger btnEliminarUsuario" idUsuario="'.$value["id"].'" fotoUsuario="'.$value["Foto"].'" usuario="'.$value["Usuario"].'"><i class="fa fa-times"></i></button>
+                              
 
                              </div>
 
@@ -242,25 +230,6 @@
 
           </div>
 
-<!--=====================================================
-  Entrada para subir foto
-  ====================================================-->
-         <div class="form-group">
-            
-            <div class="panel">SUBIR FOTO</div>
-
-            <input type="file" class="nuevaFoto" name="nuevaFoto">
-
-            <p class="help-block">Peso máximo de la foto 2MB</p>
-
-            <img src="vistas/img/usuarios/default/user2.png" class="img-thumbnail previsualizar"  width="100px">
-        
-          </div>
-    
-
-
-
-       </div>
 
       </div>
 
@@ -393,23 +362,7 @@ MODAL EDITAR USUARIO
 
             </div>
 
-            <!-- ENTRADA PARA SUBIR FOTO -->
-
-             <div class="form-group">
-              
-              <div class="panel">SUBIR FOTO</div>
-
-              <input type="file" class="nuevaFoto" name="editarFoto">
-
-              <p class="help-block">Peso máximo de la foto 2MB</p>
-
-              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
-
-              <input type="hidden" name="fotoActual" id="fotoActual">
-
-            </div>
-
-          </div>
+          
 
         </div>
 
@@ -446,3 +399,4 @@ MODAL EDITAR USUARIO
   $borrarUsuario -> ctrBorrarUsuario();
 
 ?> 
+  
