@@ -1,4 +1,4 @@
-
+<?php
 
 require_once "../controladores/consultas.controlador.php";
 require_once "../modelos/consultas.modelo.php";
